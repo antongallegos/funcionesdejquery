@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .container{
+            width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .caja{
+            border-bottom: 2px black solid;
+            display: block;
+        }
+
+        .secondline{
+            display: block;
+            text-align: center;
+        }
+        button {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        p{
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .red{
+            color: red;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="caja">
+    <h1>AddClass</h1>
+        <div class="secondline">
+            <button id="btn-red">AddClass</button>
+            <p id="p1">Click the button to add class 'red' to this paragraph</p>
+        </div>
+    </div>
+
+    <div class="caja">
+        <h1>Slidetoggle</h1>
+            <div class="secondline">
+                <button id='slide'>Slidetoggle</button>
+                <button id='toggle'>JustToggle</button>
+                <p>Click the button to slidetoggle a hidden image</p>
+                
+            </div>
+            <img id="foto" src="descarga.jfif" alt="" width="100" height="123">
+    </div>
+    
+    <div class="caja">
+        <h1>Append</h1>
+            <div class="secondline">
+                <button id='apend'>Append</button>
+                <p>Click the button to append a new paragraph!</p>
+                <div class="inner"></div>
+            </div>
+    </div>
+
+    <div class="caja">
+        <h1 class="h1">Hide and Show</h1>
+            <div class="secondline">
+                <p class='hideandshow'>Click the button to Hide and Show this paragraph!</p>
+            </div>
+    </div>
+
+    <div class="caja">
+        <h1 class="h1">Slide Up and Slide Down</h1>
+            <div class="secondline">
+                <button id='slideup'>SlideUp</button>
+                <button id='slidedown'>SlideDown</button>
+                <p class='slideupanddown'>Click the button to Hide and Show this paragraph!</p>
+            </div>
+    </div>
+
+
+    <div class="caja">
+        <h1>FadeIn and FadeOut</h1>
+            <div class="secondline">
+                <button id='fadein'>FadeIn</button>
+                <button id='fadeout'>FadeOut</button>
+                <p>Click the button to fadeIn and fadeOut</p>
+                
+            </div>
+            <img id="foto1" src="descarga.jfif" alt="" width="100" height="123">
+    </div>
+
+
+    <div class="caja">
+        <h1>Before and After</h1>
+            <div class="secondline">
+                <button id='before'>Before</button>
+                <button id='after'>After</button>
+                <p class="puntomedio">Click the button to insert "Hello" before of after this paragraph!</p>
+            </div>    
+    </div>
+
+    <div class="caja">
+        <h1>HTML element</h1>
+            <div class="secondline">
+                <button id='html'>HTML</button>
+                <p class="insertHTML">I promess, it will change this HTML!</p>
+            </div>    
+    </div>
+
+    <div class="caja">
+        <h1>Gimme the Attribute</h1>
+            <div class="secondline">
+                <button id='Attr'>HTML</button>
+                <p class="atributo" href="www.holamundo.com">I promess, it will change this HTML!</p>
+            </div>    
+    </div>
+
+    <div class="caja">
+        <h1>Show Value</h1>
+            <div class="secondline">
+                <input id='INPUT' type="text" value="Inserta un texto cariño"><br>
+                <p class="inputvalue"></p>
+            </div>    
+    </div>
+
+    <div class="caja">
+        <h1>Insert Text</h1>
+            <div class="secondline">
+                <button id='Text'>Insert Text</button>
+                <p class="texto">I promess, it will change this HTML!</p>
+            </div>    
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+    $('#btn-red').click(function(){
+        $('#p1').addClass('red');
+    });
+
+    $('#slide').click(function(){
+        $('#foto').slideToggle("slow", function(){
+        });
+    });
+
+    $('#toggle').click(function(){
+        $('#foto').toggle()
+    });
+
+    $('#apend').click(function(){
+        $(".inner").append("<p>Test</p>")
+    });
+
+    $('.h1').hover(
+        function(){$('.hideandshow').hide()},
+        function(){$('.hideandshow').show()}
+    );
+
+    $('#slideup').click(function(){
+        $(".slideupanddown").slideUp()
+    });
+    $('#slidedown').click(function(){
+        $(".slideupanddown").slideDown()
+    });
+
+
+    $('#fadein').click(function(){
+        $('#foto1').fadeIn()
+    });
+
+    $('#fadeout').click(function(){
+        $('#foto1').fadeOut()
+    });
+
+
+    $('#before').click(function(){
+        $('.puntomedio').before("<p>Hello</p>")
+    });
+
+    $('#after').click(function(){
+        $('.puntomedio').after("<p>Hello</p>")
+    });
+
+    $('#html').click(function(){
+        $('.insertHTML').html("Hello <b>World!</b>")
+    });
+
+    $('#Attr').click(function(){
+        alert($(".atributo").attr("href"));
+    });
+
+    $('#INPUT').keyup(function(){
+        var value = $(this).val();
+        $(".inputvalue").text(value);
+    })
+    .keyup();
+
+    $('#Text').click(function(){
+        $('.texto').text("Hello World!")
+    });
+
+});
+
+</script>
+</body>
+</html>
